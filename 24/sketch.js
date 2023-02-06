@@ -1,57 +1,22 @@
-var size = 30
-
-
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  createCanvas(800, 800);
+  background(240);
+  noStroke();
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
-  
-  for(var i=-1; i<20;i++){
-    
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
-  }
-  
-}
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
+  for (let x = 0; x <= width; x += 25) {
+    for (let y = 0; y <= height; y += 25) {
+      push();
+      translate(x, y);
+      rotate(radians(random(360)));
+      fill(random(255), random(255), random(255));
+      if(random(2)<1){
+        ellipse(0, 0, 30, 30);
+      }else {
+        rect(0,0,30,30);
+      }
+      pop();
     }
   }
+}

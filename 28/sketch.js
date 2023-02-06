@@ -1,57 +1,28 @@
-var size = 30
-
+let img;
+function preload() {
+  img = loadImage('hm.png');
+}
 
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  createCanvas(400, 400);
+  angleMode(DEGREES)
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
+  background(246);
+  textSize(32);
+  text('I used to be indecisive,', 10, 60);
+  text('But now I\'m not too sure',10,92)
   
-  for(var i=-1; i<20;i++){
-    
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
-  }
+  push()
+  translate(height/2,width/2)
+  rotate(frameCount)
+  image(img,-50,-50,50,50)
   
-}
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
 }
 function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
-    }
+  // this will download the first 5 seconds of the animation!
+  if (key === 's') {
+    saveGif('mySketch', 5);
   }
+}

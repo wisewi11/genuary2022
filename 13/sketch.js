@@ -1,57 +1,52 @@
-var size = 30
-
+let n =0
+let d = 0
 
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  createCanvas(400, 400);
+  angleMode(DEGREES)
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
+  background(0);
+  translate(width/2,height/2)
   
-  for(var i=-1; i<20;i++){
+  stroke(255)
+  
+  fill('purple')
+  beginShape()
+  strokeWeight(1)
+  for (let i = 0; i<360; i++){
     
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
+    let k=i * d
+    let r = random(130,170)* sin(n*k)
+    let x = r * cos(k)
+    let y = r * sin(k)
+    vertex(x,y)
   }
+  endShape(CLOSE)
   
+  noFill()
+  stroke('red')
+  strokeWeight(2)
+  beginShape()
+  
+  for (let i = 0; i<361; i++){
+    
+    let k=i
+    let r = 150* sin(n*k)
+    let x = r * cos(k)
+    let y = r * sin(k)
+    vertex(x,y)
+  }
+  endShape()
+  
+  n+=0.02
+  d+=0.2
 }
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
+
 function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
-    }
+  // this will download the first 5 seconds of the animation!
+  if (key === 's') {
+    saveGif('mySketch', 5);
   }
+}

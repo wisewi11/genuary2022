@@ -1,57 +1,44 @@
-var size = 30
-
-
-function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+var big= 20
+let img;
+function preload() {
+  img = loadImage('cutePark.png');
 }
-
+function setup() {
+  createCanvas(400,300);
+}
 
 function draw() {
-  stroke(200)
-  background('white');
+  background(255);
+  fill('yellow')
+  ellipse(width/2,height/2,200,200)
   
-  for(var i=-1; i<20;i++){
-    
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
-  }
+  fill(255)
+  strokeWeight(3)
+  ellipse(width/2-big*2,height/2,big*2,big*2)
+  line(width/2-big*2,height/2+big,width/2-big*2,height-big*3)
+  
+  line(width/2-big*2,height-big*3,width/2-big*3,height-big*2)
+  line(width/2-big*2,height-big*3,width/2-big,height-big*2)
+  
+  push()
+  translate(0,-big*2)
+  line(width/2-big*2,height-big*3,width/2-big*3,height-big*2)
+  line(width/2-big*2,height-big*3,width/2-big,height-big*2)
+  pop()
+  
+  
+  ellipse(width/2+big*2,height/2,big*2,big*2)
+  line(width/2+big*2,height/2+big,width/2+big*2,height-big*3)
+  
+  line(width/2+big*2,height-big*3,width/2+big*3,height-big*2)
+  line(width/2+big*2,height-big*3,width/2+big,height-big*2)
+  
+  push()
+  translate(0,-big*2)
+  line(width/2+big*2,height-big*3,width/2+big*3,height-big*2)
+  line(width/2+big*2,height-big*3,width/2+big,height-big*2)
+  
+  pop()
+  
   
 }
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
-    }
-  }

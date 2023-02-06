@@ -1,57 +1,44 @@
-var size = 30
+var len = 40;
 
+var tracker = 0;
 
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  createCanvas(400, 400);
+  rectMode(CENTER)
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
-  
-  for(var i=-1; i<20;i++){
-    
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
+  rotate(PI / 4);
+  background(0);
+  stroke(153,101,21)
+  for (var y = -400; y < height; y+=len) {
+    tracker+=1
+    for (var x = -400; x < width+400; x+=len) {
+      if (tracker % 2 == 0) {
+        noFill();
+        square(x, y, len);
+        square(x,y,len*6/10)
+        square (x,y,len*2/5)
+        fill(255, 253, 208)
+        square(x,y,len*4/20)
+        
+      } 
       
-      rect(x,i*size*2.5,size,size)
+      
+      else {
+        noFill()
+        square(x,y,len)
+        square(x,y,len*8/10)
+        square(x-len*4/10,y,len*5/10)
+        square(x+len*4/10,y,len*5/10)
+        square(x,y-len*4/10,len*5/10)
+        square(x,y+len*4/10,len*5/10)
+        
+        fill(225, 193, 110)
+        square(x,y,len*4/20)
+      }
 
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
-  }
-  
-}
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
+      tracker += 1;
     }
   }
+}

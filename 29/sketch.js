@@ -1,57 +1,47 @@
-var size = 30
-
+let x, y;
 
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  createCanvas(800, 800);
+  background(0);
+  x = random(width);
+  y = random(height);
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
-  
-  for(var i=-1; i<20;i++){
-    
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
+  let r = random(1);
+  if (r < 0.1) {
+    x = random(width);
+    y = random(height);
+  } else if (r < 0.2) {
+    x += random(-10, 10);
+    y += random(-10, 10);
+  } else if (r < 0.3) {
+    x += random(-30, 30);
+    y += random(-30, 30);
+  } else if (r < 0.4) {
+    x += random(-50, 50);
+    y += random(-50, 50);
+  } else {
+    x += random(-5, 5);
+    y += random(-5, 5);
   }
+  x = constrain(x, 0, width-1);
+  y = constrain(y, 0, height-1);
+  stroke(255);
   
-}
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
-    }
+  // ellipse(x,y,random(10,70))
+  
+  
+  
+  
+  strokeWeight(random(0,2))
+  
+  for (let i = 0; i < 10; i++) {
+    let x1 = random(width);
+    let y1 = random(height);
+    let x2 = random(width);
+    let y2 = random(height);
+    stroke(random(255), random(255), random(255));
+    line(x1, y1, x2, y2);
   }
+}

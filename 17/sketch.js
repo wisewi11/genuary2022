@@ -1,57 +1,38 @@
-var size = 30
-
+let sizeUp = 400
+let x = 0
+let y = 0
+let weight = 50
 
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  createCanvas(400, 400);
+  background(220);
+  frameRate(5)
+  strokeWeight(weight)
+  
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
+  fill(random(50,255),random(50,255) ,random(50,255) )
   
-  for(var i=-1; i<20;i++){
-    
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
+  square(x,y,sizeUp)
+  x+=sizeUp
+  if (x>width){
+    y+=sizeUp
+    x=0
   }
+  if(y>height){
+    x=0
+    y=0
+    sizeUp/=2
+    frameRate(frameRate()*4)
+    weight/=1.5
+    strokeWeight(weight)
+  }
+}
+function mousePressed() {
+  saveGif('gridgrid', 5);
+  
+  
+    
   
 }
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
-    }
-  }

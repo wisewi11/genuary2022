@@ -1,57 +1,64 @@
-var size = 30
+let img;
 
+function preload() {
+  img = loadImage('joebob.jpg.jpg');
+}
 
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  createCanvas(400, 400, WEBGL);
+  
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
-  
-  for(var i=-1; i<20;i++){
-    
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      
-      rect(x,i*size*2.5,size,size)
+  background(220);
+  noStroke();
 
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
+  push()
+  rotateZ(QUARTER_PI * 8)
+  texture(img)
+  plane(400, 400)
+  pop()
 
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
+  push()
+  rotateZ(QUARTER_PI * 7.5)
+  texture(img)
+  plane(350, 350)
+  pop()
 
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
+  push()
+  rotateZ(QUARTER_PI * 7)
+  texture(img)
+  plane(300, 300)
+  pop()
 
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
+  push()
+  rotateZ(QUARTER_PI * 6.5)
+  texture(img)
+  plane(250, 250)
+  pop()
 
-    }
-    
-    
-    
-  }
-  
+  push()
+  rotateZ(QUARTER_PI * 6)
+  texture(img)
+  plane(200, 200)
+  pop()
+
+  push()
+  rotateZ(QUARTER_PI * 5.5)
+  texture(img)
+  plane(150, 150)
+  pop()
+
+  push()
+  rotateZ(QUARTER_PI * 5)
+  texture(img)
+  plane(100, 100)
+  pop()
+
+
+  push()
+  rotateZ(QUARTER_PI * 4)
+  texture(img)
+  plane(30, 30)
+  pop()
 }
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
-    }
-  }

@@ -1,57 +1,47 @@
-var size = 30
+
+
+let walls = [];
+let ray;
+let particle;
+let xoff = 0;
+let yoff = 10000;
 
 
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  
+  createCanvas(1600, 800);
+  for (let i = 0; i < 6; i++) {
+    let x1 = random(width);
+    let x2 = random(width);
+    let y1 = random(height);
+    let y2 = random(height);
+    walls[i] = new Boundary(x1, y1, x2, y2);
+  }
+  walls.push(new Boundary(-1, -1, width, -1));
+  walls.push(new Boundary(width, -1, width, height));
+  walls.push(new Boundary(width, height, -1, height));
+  walls.push(new Boundary(-1, height, -1, -1));
+  particle = new Particle();
+  
+  
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
-  
-  for(var i=-1; i<20;i++){
-    
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
+  background(0);
+  for (let wall of walls) {
+    wall.show();
   }
-  
-}
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  //particle.update(noise(xoff) * width, noise(yoff) * height);
+  particle.update(mouseX, mouseY);
+  particle.show();
+  particle.look(walls);
+
+  xoff += 0.01;
+  yoff += 0.01;
 }
 function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
-    }
+  // this will download the first 5 seconds of the animation!
+  if (key === 's') {
+    saveGif('shadows', 5);
   }
+}

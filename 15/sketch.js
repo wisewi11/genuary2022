@@ -1,57 +1,44 @@
-var size = 30
-
-
 function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+  createCanvas(400, 400, WEBGL);
+  angleMode(DEGREES)
 }
-
 
 function draw() {
-  stroke(200)
-  background('white');
+  background(30);
   
-  for(var i=-1; i<20;i++){
+  rotateX(frameCount)
+  
+  noFill()
+  stroke(255)
+  for (var i = 0; i<50; i++){
     
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
+    var r = map(sin(frameCount/2),-1,1,100,200)
+    var g = map(i,0,50,100,255)
+    var b = map(cos(frameCount),-1,1,200,100)
+    
+    stroke(r,g,b)
+    rotate(frameCount)
+    
+    beginShape()
+    for (var j = 0; j<360; j+=120){
+      var rad = i*3
+      var x = rad * cos(j)
+      var y = rad * sin(j)
+      var z = sin(frameCount*2 + i*5) * 50
       
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
+      vertex(x,y,z)
     }
     
-    
-    
+    endShape(CLOSE)
   }
-  
+              
+      
+    
 }
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
+
 function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
-    }
+  // this will download the first 5 seconds of the animation!
+  if (key === 's') {
+    saveGif('mySketch', 5);
   }
+}
