@@ -1,7 +1,7 @@
 # genuary2022
 here are my sketches for genuary 2022
 ### Jan 1 - Perfect Loop
-(1\3be58fd8-9106-63cd-e1bd-f93698fa8d74.gif)
+![This is an image](1/3be58fd8-9106-63cd-e1bd-f93698fa8d74.gif)
 ### Jan 2 - Made in 10 minutes
 
 ### Jan 3 - Glitch Art
