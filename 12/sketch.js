@@ -1,57 +1,45 @@
-var size = 30
+howBig = 10;
+indentation=30
 
-
-function setup() {
-  createCanvas(400,400)
-//   canvas.parent(sketch)
+let img;
+function preload() {
+  img = loadImage('colorblend.png');
 }
-
+  
+function setup() {
+  createCanvas(400, 400);
+  fill(random(170,255),random(170,255),random(170,255))
+  
+}
 
 function draw() {
-  stroke(200)
-  background('white');
+  background(img);
   
-  for(var i=-1; i<20;i++){
+  for (var y = 0; y < height; y += 3 * howBig) {
+    if (indentation==30){
+      indentation=0
+    }
+    else{
+      indentation=30
+    }
     
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
+    for (var x = -50; x < width; x += 6 * howBig) {
       
-      rect(x,i*size*2.5,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size,(0.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size*0.5,(1+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x+size*0.5,(1.5+(i*2.5))*size,size,size)
-
-    }
-    for (var x = 0; x<width;x+=size*2.5){
-      fill('white')
-      rect(x-size,(2+(i*2.5))*size,size,size)
-
-    }
-    
-    
-    
-  }
-  
-}
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-function keyPressed() {
-
-    // If you hit the s key, save an image
-    if (key == 's') {
-      save("tessellation.png");
+      beginShape();
+      vertex(x+indentation,y);
+      vertex(x+indentation,y+3*howBig)
+      vertex(x+howBig+indentation,y+3*howBig)
+      vertex(x+howBig+indentation,y+2*howBig)
+      vertex(x+howBig*4+indentation,y+2*howBig)
+      vertex(x+howBig*4+indentation,y+3*howBig)
+      vertex(x+howBig*5+indentation,y+3*howBig)
+      vertex(x+howBig*5+indentation,y)
+      vertex(x+howBig*4+indentation,y)
+      vertex(x+howBig*4+indentation,y+howBig)
+      vertex(x+howBig+indentation,y+howBig)
+      vertex(x+howBig+indentation,y)
+      vertex(x+indentation,y)
+      endShape()
     }
   }
+}

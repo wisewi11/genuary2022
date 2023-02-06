@@ -1,28 +1,49 @@
-var colors = ["#006494", "#247BA0", "#1B98E0", "#E8F1F2"];
-
-var bg= 0
-var spacing = 20
-// ->
-var videoDuration = 4
-var fps = 30
 
 
+let angle = 0;
+let joe
+let sup = 10
 function setup() {
-  createCanvas(400, 400);
-  frameRate(30)
+  createCanvas(640, 360);
+  slider = createSlider(0, TWO_PI, PI / 4, 0.01);
 }
 
 function draw() {
-  background(bg);
-  // ->
-  var time = millis()/1000
-  var speed = TWO_PI/videoDuration  
-  for(j = 0; j < 1200; j += spacing*(colors.length)){
-    colors.forEach((color,i) => {
-      fill(color)
-      var circleSize = constrain((spacing * time) - (spacing * i) - j,0,Infinity)
-      // var circleSize = constrain((spacing * time) - (spacing * i),0,Infinity)
-      ellipse(height/2,width/2,circleSize,circleSize)
-    })
+  background(0);
+  joe = PI+frameCount/100
+  
+  angle = joe
+  
+  stroke(255);
+  strokeWeight(2);
+  translate(width * 0.5, height);
+  branch(100);
+}
+
+function branch(len) {
+  stroke(0,255,0)
+  line(0, 0, 0, -len);
+  translate(0,-len)
+  rotate(PI/4)
+  // branch(len*0.67)
+constrain(joe,PI,TWO_PI)
+  
+  
+  if (len > 5.5) {
+    
+    push();
+    rotate(angle);
+    branch(len * 0.75);
+    pop();
+    push();
+    rotate(-angle);
+    branch(len * 0.75);
+    pop();
   }
+}
+function mousePressed() {
+  // this will download the first 5 seconds of the animation!
+  
+    saveGif('plant', 5);
+  
 }

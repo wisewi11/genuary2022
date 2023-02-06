@@ -1,28 +1,53 @@
-var colors = ["#006494", "#247BA0", "#1B98E0", "#E8F1F2"];
-
-var bg= 0
-var spacing = 20
-// ->
-var videoDuration = 4
-var fps = 30
-
-
+let x = 0;
+// let f = 0;
+let y = 0;
+let spacing = 30;
+let sUP = 2;
+let clutter = 2; //needs to be >0
 function setup() {
-  createCanvas(400, 400);
-  frameRate(30)
+  createCanvas(800, 800);
+  background('white');
 }
 
 function draw() {
-  background(bg);
-  // ->
-  var time = millis()/1000
-  var speed = TWO_PI/videoDuration  
-  for(j = 0; j < 1200; j += spacing*(colors.length)){
-    colors.forEach((color,i) => {
-      fill(color)
-      var circleSize = constrain((spacing * time) - (spacing * i) - j,0,Infinity)
-      // var circleSize = constrain((spacing * time) - (spacing * i),0,Infinity)
-      ellipse(height/2,width/2,circleSize,circleSize)
-    })
+  
+  for(let f = 0;f<2000;f++){
+    stroke('black');
+    if(random(1)<0.1){
+      
+      stroke(random()>0.5?'violet':'rebeccapurple')
+             
+    }
+    if (noise(f) < 0.5) {
+      strokeWeight(random(0.25,6))
+      line(x, y-f/clutter, x + spacing, y + spacing-f/clutter);
+    } else {
+      strokeWeight(random(0.25,6))
+      line(x, y + spacing-f/clutter, x + spacing, y-f/clutter);
+      
+    }
+    x = x + spacing;
+    if (x > width) {
+      x = 0;
+      y = y + spacing;
+    }
+  
   }
+  
+    
+//       for (var y = 0; y<height;y+=spacing){
+//         for (var x = 0; x<width;x+=spacing){
+//           if(random(1)<0.5){
+//             line(x,y, x+spacing, y+spacing)
+          
+//           }
+//           else{
+//             line(x, y +spacing, x+spacing, y)
+//           }
+          
+//         }
+        
+//       }
+    
+  
 }
