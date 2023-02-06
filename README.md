@@ -1,7 +1,7 @@
 # genuary2022
 here are my sketches for genuary 2022
 ### Jan 1 - Perfect Loop
-
+(1\3be58fd8-9106-63cd-e1bd-f93698fa8d74.gif)
 ### Jan 2 - Made in 10 minutes
 
 ### Jan 3 - Glitch Art
@@ -60,7 +60,7 @@ here are my sketches for genuary 2022
 
 ### Jan 30 - Minimalism
 
-### ### Jan 31 - Deliberately break one of your previous images, take one of your previous works and ruin it. Alternatively, remix one of your previous works.
+### Jan 31 - Deliberately break one of your previous images, take one of your previous works and ruin it. Alternatively, remix one of your previous works.
 
 ![This is an image](31/output.gif)
 
