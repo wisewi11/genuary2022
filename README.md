@@ -19,7 +19,7 @@ here are my sketches for genuary 2022
 ### Jan 9 - Plants
 ![This is an image](9/plant.gif)
 ### Jan 10 - Generative music
-![This is an image](10/2023-01-1014-00-33.mp4)
+![Link to video](10/2023-01-1014-00-33.mp4)
 ### Jan 11 - Suprematism
 ![This is an image](11/suprematism.png)
 ### Jan 12 - Tessellation
@@ -33,7 +33,7 @@ here are my sketches for genuary 2022
 ### Jan 16 - Reflection of reflection
 ![This is an image](16/reflection.png)
 ### Jan 17 - A grid inside a grid inside a grid
-![This is an image](17/2023-01-1710-53-37.mp4)
+![Link to video](17/2023-01-1710-53-37.mp4)
 ### Jan 18 - Definitely not a grid
 ![This is an image](18/defNotGrid.gif)
 ### Jan 19 - Black and white
